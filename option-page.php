@@ -146,6 +146,16 @@ class Plugin_option_page {
 
 		register_setting( 'exc_option_group', 'exc_select_post' );
 
+		add_settings_field( 
+			'exc_upload_img', 
+			__('Upload Image','textdomain'), 
+			array($this,'upload_img_cb'),
+			'exc_plugin_page',
+			'exc_theme_option_section_1' 
+		);
+
+		register_setting( 'exc_option_group', 'exc_upload_img' );
+
 	}
 
 	/*
@@ -201,6 +211,9 @@ class Plugin_option_page {
 				$_post->post_title);
 		}
 		echo '</select>';
+	}
+	public function upload_img_cb(){
+		printf('<input class="button button-alert" id="exc_btn" type="button" value="Upload">');
 	}
 
 }
